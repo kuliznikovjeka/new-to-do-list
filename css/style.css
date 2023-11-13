@@ -253,6 +253,7 @@ body {
   font-size: 16px;
   -webkit-transition: background-color 0.3s ease 0s;
   transition: background-color 0.3s ease 0s;
+  color: #222428;
 }
 
 .to-do__btn:not(:last-child) {

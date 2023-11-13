@@ -125,6 +125,7 @@ body {
 		width: 100%;
 		font-size: 16px;
 		transition: background-color 0.3s ease 0s;
+		color: $mainColor;
 		&:not(:last-child) {
 			margin-bottom: 40px;
 		}
