@@ -1,0 +1,374 @@
+@charset "UTF-8";
+/*Обнуление*/
+@import url("https://fonts.googleapis.com/css?family=Inter:regular,700&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+:focus,
+:active {
+  outline: none;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+input,
+button,
+textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/*--------------------*/
+body {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  color: #222428;
+}
+
+[class*="__container"] {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  min-height: 100%;
+  overflow: hidden;
+}
+
+.title {
+  text-align: center;
+  font-size: 40px;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 120%;
+  color: #222428;
+}
+
+.title span {
+  color: #00bee3;
+}
+
+@media (max-width: 767px) {
+  .title {
+    font-size: 32px;
+    max-width: 360px;
+  }
+}
+
+@media (max-width: 425px) {
+  .title {
+    font-size: 26px;
+    max-width: 300px;
+  }
+}
+
+.to-do {
+  padding: 70px 0px;
+}
+
+@media (max-width: 767px) {
+  .to-do {
+    padding: 50px 0px;
+  }
+}
+
+@media (max-width: 480px) {
+  .to-do {
+    padding: 30px 0px;
+  }
+}
+
+.to-do__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.to-do__title:not(:last-child) {
+  margin-bottom: 70px;
+}
+
+@media (max-width: 767px) {
+  .to-do__title:not(:last-child) {
+    margin-bottom: 30px;
+  }
+}
+
+.to-do__wrapper {
+  background-color: #edfdfd;
+  max-width: 700px;
+  width: 100%;
+  border-radius: 16px;
+  padding: 25px 35px;
+  -webkit-box-shadow: 0px 4px 10px 0px rgba(77, 77, 77, 0.15);
+          box-shadow: 0px 4px 10px 0px rgba(77, 77, 77, 0.15);
+}
+
+@media (max-width: 767px) {
+  .to-do__wrapper {
+    padding: 25px 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .to-do__wrapper {
+    padding: 25px 15px 15px 15px;
+  }
+}
+
+.to-do__input {
+  border-radius: 6px;
+  border: 1px solid #e2e2e2;
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 16px;
+}
+
+.to-do__input:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.to-do__input::-webkit-input-placeholder {
+  color: #bebebe;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.to-do__input:-ms-input-placeholder {
+  color: #bebebe;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.to-do__input::-ms-input-placeholder {
+  color: #bebebe;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.to-do__input::placeholder {
+  color: #bebebe;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.to-do__btn {
+  background-color: #ff94b9;
+  border-radius: 6px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 12px 15px;
+  width: 100%;
+  font-size: 16px;
+  -webkit-transition: background-color 0.3s ease 0s;
+  transition: background-color 0.3s ease 0s;
+}
+
+.to-do__btn:not(:last-child) {
+  margin-bottom: 40px;
+}
+
+@media (any-hover: hover) {
+  .to-do__btn:hover {
+    background-color: #d36e91;
+  }
+}
+
+.to-do__item {
+  padding: 10px 15px;
+  background-color: #c4f1f9;
+  border-radius: 6px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  gap: 15px 30px;
+}
+
+.to-do__item:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+@media (max-width: 480px) {
+  .to-do__item {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    text-align: center;
+  }
+}
+
+.to-do__task-name {
+  color: #00bee3;
+  font-weight: 500;
+  line-height: 125%;
+}
+
+.actions-to-do {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px;
+}
+
+@media (max-width: 480px) {
+  .actions-to-do {
+    -webkit-column-gap: 30px;
+            column-gap: 30px;
+  }
+}
+
+.actions-to-do__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 4px;
+}
+
+@media (max-width: 767px) {
+  .actions-to-do__item {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.actions-to-do__item_done {
+  background-color: #46b464;
+  -webkit-transition: background-color 0.3s ease 0s;
+  transition: background-color 0.3s ease 0s;
+}
+
+@media (any-hover: hover) {
+  .actions-to-do__item_done:hover {
+    background-color: #34864a;
+  }
+}
+
+.actions-to-do__item_delete {
+  background-color: #d10c2c;
+  -webkit-transition: background-color 0.3s ease 0s;
+  transition: background-color 0.3s ease 0s;
+}
+
+@media (any-hover: hover) {
+  .actions-to-do__item_delete:hover {
+    background-color: #961919;
+  }
+}
+
+.actions-to-do__item_change {
+  background-color: #ffae11;
+  -webkit-transition: background-color 0.3s ease 0s;
+  transition: background-color 0.3s ease 0s;
+}
+
+@media (any-hover: hover) {
+  .actions-to-do__item_change:hover {
+    background-color: #ac7309;
+  }
+}
