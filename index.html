@@ -11,60 +11,92 @@
 
 
 <body>
-	<div class="wrapper">
-		<section class="to-do">
-			<div class="to-do__container">
-				<h1 class="to-do__title title">Мой список задач <span>( To do list )</span></h1>
-				<div class="to-do__wrapper">
-					<input placeholder="Введите название задачи" type="text" class="to-do__input">
-					<button class="to-do__btn">Добавить задачу</button>
-					<div class="to-do__item">
-						<p class="to-do__task-name">Сверстать дизайн to-do листа (задачника)</p>
-						<div class="to-do__actions actions-to-do">
-							<button class="actions-to-do__item actions-to-do__item_done">
-								<img src="./icons/01.svg" alt="">
-							</button>
-							<button class="actions-to-do__item actions-to-do__item_delete">
-								<img src="./icons/02.svg" alt="">
-							</button>
-							<button class="actions-to-do__item actions-to-do__item_change">
-								<img src="./icons/03.svg" alt="">
-							</button>
+	<section class="to-do">
+		<div class="to-do__container">
+			<div class="to-do__wrapper">
+				<h3 class="to-do__pripority to-do__pripority_high">HIGH</h3>
+				<form id="form-high-priority" class="to-do__row">
+					<label for="high-task" class="to-do__label">
+						<input type="text" name="high-task" id="high-task" required placeholder="Добавить важных дел"
+							class="to-do__input to-do__input_high">
+					</label>
+					<button type="submit" class="to-do__btn-add to-do__btn-add_high btn">
+						<img src="./icons/add.svg" alt="">
+					</button>
+				</form>
+				<!-- <div class="to-do__row to-do__row_p">
+					<label class="to-do__checkbox-label">
+						<div class="to-do__body">
+							<input type="checkbox" class="to-do__checkbox-input">
+							<span class="to-do__checkbox-custom"></span>
 						</div>
-					</div>
-					<div class="to-do__item">
-						<p class="to-do__task-name">Решить контрольную на оценку "Хорошо"</p>
-						<div class="to-do__actions actions-to-do">
-							<button class="actions-to-do__item actions-to-do__item_done">
-								<img src="./icons/01.svg" alt="">
-							</button>
-							<button class="actions-to-do__item actions-to-do__item_delete">
-								<img src="./icons/02.svg" alt="">
-							</button>
-							<button class="actions-to-do__item actions-to-do__item_change">
-								<img src="./icons/03.svg" alt="">
-							</button>
+						<p class="to-do__text">
+							Вот вам и супер интересная тема.
+							Вы наверняка заметили что ваши файлы с кодом становятся все объемнее, что хочется вынести некоторые
+							вещи куда-то за пределы основной программы.
+						</p>
+					</label>
+					<button class="to-do__btn-delete to-do__btn-delete_high btn">
+						<img src="./icons/delete.svg" alt="">
+					</button>
+				</div>
+				<div class="to-do__row to-do__row_p">
+					<label class="to-do__checkbox-label">
+						<div class="to-do__body">
+							<input type="checkbox" class="to-do__checkbox-input">
+							<span class="to-do__checkbox-custom"></span>
 						</div>
-					</div>
-					<div class="to-do__item">
-						<p class="to-do__task-name">Внимательно слушать Ярика на эфире и задавать вопросы :D</p>
-						<div class="to-do__actions actions-to-do">
-							<button class="actions-to-do__item actions-to-do__item_done">
-								<img src="./icons/01.svg" alt="">
-							</button>
-							<button class="actions-to-do__item actions-to-do__item_delete">
-								<img src="./icons/02.svg" alt="">
-							</button>
-							<button class="actions-to-do__item actions-to-do__item_change">
-								<img src="./icons/03.svg" alt="">
-							</button>
+						<p class="to-do__text">
+							Сверстать этот TODO list
+						</p>
+					</label>
+					<button class="to-do__btn-delete to-do__btn-delete_high btn">
+						<img src="./icons/delete.svg" alt="">
+					</button>
+				</div> -->
+				<div class="to-do__row to-do__row_p to-do__row_checked">
+					<label class="to-do__checkbox-label">
+						<div class="to-do__body">
+							<input type="checkbox" checked class="to-do__checkbox-input">
+							<span class="to-do__checkbox-custom"></span>
 						</div>
-					</div>
+						<p class="to-do__text">
+							Начать делать задачу
+						</p>
+					</label>
+					<button class="to-do__btn-delete to-do__btn-delete_high btn">
+						<img src="./icons/delete.svg" alt="">
+					</button>
+				</div>
+				<h3 class="to-do__pripority to-do__pripority_low">LOW</h3>
+				<form id="form-low-priority" class="to-do__row">
+					<label for="low-task" class="to-do__label">
+						<input name="low-task" id="low-task" required type="text" placeholder="Добавить"
+							class="to-do__input to-do__input_low">
+					</label>
+					<button class="to-do__btn-add to-do__btn-add_low btn">
+						<img src="./icons/add.svg" alt="">
+					</button>
+				</form>
+				<div class="to-do__row to-do__row_p">
+					<label class="to-do__checkbox-label">
+						<div class="to-do__body">
+							<input type="checkbox" class="to-do__checkbox-input">
+							<span class="to-do__checkbox-custom"></span>
+						</div>
+						<p class="to-do__text">
+							Посмотреть ютубчик
+						</p>
+					</label>
+					<button class="to-do__btn-delete to-do__btn-delete_low btn">
+						<img src="./icons/delete.svg" alt="">
+					</button>
 				</div>
 			</div>
-		</section>
-	</div>
-	<script src="js/script.js"></script>
+		</div>
+	</section>
+	<script type="module" src="js/html-elements.js"></script>
+	<script type="module" src="js/script.js"></script>
 </body>
 
 </html>

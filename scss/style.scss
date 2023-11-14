@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css?family=Inter:regular,700&display=swap");
 
 // цвета
-$mainColor: #222428;
+$mainColor: #000;
 $aquaColor: #edfdfd;
 $blueColor: #00bee3;
 $lightBlueColor: #c4f1f9;
@@ -24,203 +24,128 @@ body {
 	padding: 0 15px;
 }
 //========================================================================================================================================================
-
-.wrapper {
-	display: flex;
-	flex-direction: column;
-	min-height: 100%;
-	overflow: hidden;
+.btn {
+	background: transparent;
+	padding: 0px 12px;
 }
-.title {
-	text-align: center;
-	font-size: 40px;
-	font-weight: 700;
-	text-transform: uppercase;
-	line-height: (48/40 * 100%);
-	color: $mainColor;
-	span {
-		color: $blueColor;
-	}
-	@media (max-width: 767px) {
-		font-size: 32px;
-		max-width: 360px;
-	}
-	@media (max-width: 425px) {
-		font-size: 26px;
-		max-width: 300px;
-	}
-}
-
 .to-do {
 	padding: 70px 0px;
-	@media (max-width: 767px) {
-		padding: 50px 0px;
-	}
-	@media (max-width: 480px) {
-		padding: 30px 0px;
-	}
+	// .to-do__container
 
 	&__container {
 		display: flex;
-		flex-direction: column;
+		justify-content: center;
 		align-items: center;
-	}
-
-	// .to-do__title
-
-	&__title {
-		&:not(:last-child) {
-			margin-bottom: 70px;
-		}
-		@media (max-width: 767px) {
-			&:not(:last-child) {
-				margin-bottom: 30px;
-			}
-		}
 	}
 
 	// .to-do__wrapper
 
 	&__wrapper {
-		background-color: $aquaColor;
-		max-width: 700px;
+		max-width: 460px;
 		width: 100%;
-		border-radius: 16px;
-		padding: 25px 35px;
-		box-shadow: 0px 4px 10px 0px rgba(77, 77, 77, 0.15);
-		@media (max-width: 767px) {
-			padding: 25px 15px;
+	}
+
+	// .to-do__pripority
+
+	&__pripority {
+		text-align: center;
+		color: $mainColor;
+		&:not(:last-child) {
+			margin-bottom: 12px;
 		}
-		@media (max-width: 480px) {
-			padding: 25px 15px 15px 15px;
+	}
+
+	// .to-do__row
+
+	&__row {
+		display: flex;
+		gap: 10px;
+		justify-content: space-between;
+		border-radius: 6px;
+		border: 1px solid #989898;
+		&:not(:last-child) {
+			margin-bottom: 10px;
 		}
+		&_p {
+			padding: 12px;
+		}
+		&_checked {
+			background-color: #f4f4f4;
+		}
+	}
+
+	&__label {
+		width: 100%;
 	}
 
 	// .to-do__input
 
 	&__input {
-		border-radius: 6px;
-		border: 1px solid #e2e2e2;
 		width: 100%;
-		padding: 12px 15px;
-		font-size: 16px;
-		&:not(:last-child) {
-			margin-bottom: 10px;
-		}
-		&::placeholder {
-			color: #bebebe;
-			font-size: 16px;
-			font-weight: 500;
-		}
+		padding: 12px;
+		border-radius: 6px;
 	}
 
-	// .to-do__btn
+	// .to-do__btn-add
 
-	&__btn {
-		background-color: $pinkColor;
-		border-radius: 6px;
-		font-weight: 700;
-		text-transform: uppercase;
-		padding: 12px 15px;
-		width: 100%;
-		font-size: 16px;
-		transition: background-color 0.3s ease 0s;
-		color: $mainColor;
-		&:not(:last-child) {
-			margin-bottom: 40px;
-		}
-		@media (any-hover: hover) {
-			&:hover {
-				background-color: #d36e91;
-			}
-		}
+	&__btn-add {
 	}
 
-	// .to-do__item
-
-	&__item {
-		padding: 10px 15px;
-		background-color: $lightBlueColor;
-		border-radius: 6px;
+	// .to-do__checkbox-label
+	&__checkbox-label {
+		cursor: pointer;
 		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		gap: 15px 30px;
-		&:not(:last-child) {
-			margin-bottom: 10px;
-		}
-		@media (max-width: 480px) {
-			flex-direction: column;
-			text-align: center;
+		width: 100%;
+	}
+
+	// .to-do__checkbox-input
+
+	&__checkbox-input {
+		width: 0;
+		height: 0;
+		opacity: 0;
+		position: absolute;
+		z-index: -1;
+	}
+
+	&__checkbox-custom {
+		cursor: pointer;
+		position: relative;
+		display: inline-block;
+		width: 20px;
+		height: 20px;
+		background: transparent;
+		border: 1px solid #989;
+		border-radius: 50%;
+		margin-right: 12px;
+		&::before {
+			content: "";
+			position: absolute;
+			display: inline-block;
+			transform: scale(0);
+			width: 14px;
+			height: 14px;
+			top: 12%;
+			left: 12%;
+			background: #c4c4c4;
+			border-radius: 50%;
+			transition: transform 0.3s ease 0s;
 		}
 	}
 
-	// .to-do__task-name
+	// .to-do__text
 
-	&__task-name {
-		color: $blueColor;
-		font-weight: 500;
-		line-height: (20/16 * 100%);
+	&__text {
 	}
 
-	// .to-do__actions
+	// .to-do__btn-delete
 
-	&__actions {
+	&__btn-delete {
+		align-self: start;
+		padding: 0;
 	}
 }
 
-.actions-to-do {
-	display: flex;
-	gap: 10px;
-	@media (max-width: 480px) {
-		column-gap: 30px;
-	}
-	// .actions-to-do__item
-
-	&__item {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		width: 34px;
-		height: 34px;
-		border-radius: 4px;
-		@media (max-width: 767px) {
-			width: 30px;
-			height: 30px;
-		}
-
-		&_done {
-			background-color: $greenColor;
-			transition: background-color 0.3s ease 0s;
-			@media (any-hover: hover) {
-				&:hover {
-					background-color: #34864a;
-				}
-			}
-		}
-
-		// .actions-to-do__item_delete
-
-		&_delete {
-			background-color: $redColor;
-			transition: background-color 0.3s ease 0s;
-			@media (any-hover: hover) {
-				&:hover {
-					background-color: rgb(150, 25, 25);
-				}
-			}
-		}
-
-		// .actions-to-do__item_change
-
-		&_change {
-			background-color: $orangeColor;
-			transition: background-color 0.3s ease 0s;
-			@media (any-hover: hover) {
-				&:hover {
-					background-color: rgb(172, 115, 9);
-				}
-			}
-		}
-	}
+.to-do__checkbox-input:checked + .to-do__checkbox-custom::before {
+	transform: scale(1);
 }

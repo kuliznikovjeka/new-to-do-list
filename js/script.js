@@ -1,99 +1,57 @@
-// const firstInput = document.getElementById('first-input-value');
-// const secondInput = document.getElementById('second-input-value');
-// const selectedAction = document.getElementById('selected-action');
-// const btn = document.getElementById('btn');
-// const titleCaclResult = document.querySelector('.calculation__results');
+import { HTML_ELEMENTS } from './html-elements.js';
 
-// const ERROR = {
-// 	INFINITY: 'ОШИБКА! На ноль делить нельзя',
-// }
+HTML_ELEMENTS.FORM_HIGH_PRIORITY.addEventListener('submit', createTask);
+HTML_ELEMENTS.FORM_LOW_PRIORITY.addEventListener('submit', createTask);
 
-// const OPERATION = {
-// 	ADDITION: 'сложить +',
-// 	SUBSTRACTION: 'вычесть -',
-// 	MULTIPLICATION: 'умножить *',
-// 	DIVISION: 'разделить /',
-// }
+function createTask(event) {
+	event.preventDefault();
+	const target = event.target;
 
-// const getParagraf = () => {
-// 	const p = document.createElement('p');
-// 	p.classList.add('calculation__total-value');
-// 	return p;
-// }
+	const highPriorityInputValue = HTML_ELEMENTS.INPUT_HIGH_PRIORITY.value;
+	const lowPriorityInputValue = HTML_ELEMENTS.INPUT_LOW_PRIORITY.value;
 
-// const deleteParagraph = (e) => e.target.remove();
+	const row = createElement('div', 'to-do__row');
+	row.classList.add('to-do__row_p');
+	const label = createElement('label', 'to-do__checkbox-label');
+	const body = createElement('div', 'to-do__body');
+	const checkbox = createElement('input', 'to-do__checkbox-input', '', 'checkbox');
+	const customCheckbox = createElement('span', 'to-do__checkbox-custom');
+	const text = createElement('p', 'to-do__text');
+	const btnDelete = createElement('button', 'to-do__btn-delete', '', 'button');
+	btnDelete.classList.add('to-do__btn-delete_high', 'btn');
+	const img = createElement('img', 'close');
+	img.src = './icons/delete.svg';
 
-// const additionNumbers = () => {
-// 	const result = getParagraf();
-// 	titleCaclResult.after(result);
+	row.append(label, btnDelete);
+	label.append(body, text);
+	btnDelete.append(img);
+	body.append(checkbox, customCheckbox);
 
-// 	const operation = `${+firstInput.value} + ${+secondInput.value}`
+	switch (target) {
+		case HTML_ELEMENTS.FORM_HIGH_PRIORITY:
+			text.textContent = highPriorityInputValue;
+			HTML_ELEMENTS.FORM_HIGH_PRIORITY.after(row);
+			render(HTML_ELEMENTS.INPUT_HIGH_PRIORITY)
+			break;
+		case HTML_ELEMENTS.FORM_LOW_PRIORITY:
+			text.textContent = lowPriorityInputValue;
+			HTML_ELEMENTS.FORM_LOW_PRIORITY.after(row);
+			render(HTML_ELEMENTS.INPUT_LOW_PRIORITY)
+			break;
+	}
+}
 
-// 	result.addEventListener('click', deleteParagraph);
-// 	return result.textContent = `${operation} = ${(+firstInput.value * 100 + +secondInput.value * 100) / 100}`;
-// }
+function createElement(tagName, className, text, typeName) {
+	const tag = document.createElement(tagName);
+	tag.classList.add(className);
+	tag.textContent = text;
+	tag.type = typeName;
+	return tag
+}
 
-// const substractNumbers = () => {
-// 	const result = getParagraf();
-// 	titleCaclResult.after(result);
+function render(inputValue) {
+	inputValue.value = '';
+}
 
-// 	const operation = `${+firstInput.value} - ${+secondInput.value}`
 
-// 	result.addEventListener('click', deleteParagraph);
-// 	return result.textContent = `${operation} = ${(+firstInput.value * 100 - +secondInput.value * 100) / 100}`;
-// }
-
-// const multiplyNumbers = () => {
-// 	const result = getParagraf();
-// 	titleCaclResult.after(result);
-
-// 	const operation = `${+firstInput.value} * ${+secondInput.value}`
-
-// 	result.addEventListener('click', deleteParagraph);
-// 	return result.textContent = `${operation} = ${+firstInput.value * +secondInput.value}`;
-// }
-
-// const divideNumbers = () => {
-// 	const result = getParagraf();
-// 	titleCaclResult.after(result);
-// 	result.addEventListener('click', deleteParagraph);
-
-// 	if (+secondInput.value === 0) return result.textContent = ERROR.INFINITY;
-
-// 	const operation = `${+firstInput.value} / ${+secondInput.value}`
-// 	return result.textContent = `${operation} = ${+firstInput.value / +secondInput.value}`;
-// }
-
-// const renderValues = () => {
-// 	firstInput.value = '';
-// 	secondInput.value = '';
-// }
-
-// btn.addEventListener('click', () => {
-// 	if (firstInput.value.length === 0 || secondInput.value.length === 0) return;
-
-// 	switch (selectedAction.textContent) {
-
-// 		case OPERATION.ADDITION:
-// 			additionNumbers();
-// 			break;
-
-// 		case OPERATION.SUBSTRACTION:
-// 			substractNumbers();
-// 			break;
-
-// 		case OPERATION.MULTIPLICATION:
-// 			multiplyNumbers();
-// 			break;
-
-// 		case OPERATION.DIVISION:
-// 			divideNumbers();
-// 			break;
-
-// 		default:
-// 			additionNumbers();
-// 	}
-
-// 	renderValues();
-// });
 
