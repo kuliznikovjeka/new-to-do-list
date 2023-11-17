@@ -1,21 +1,9 @@
 @import "nullstyle.scss";
 @import url("https://fonts.googleapis.com/css?family=Inter:regular,700&display=swap");
 
-// цвета
-$mainColor: #000;
-$aquaColor: #edfdfd;
-$blueColor: #00bee3;
-$lightBlueColor: #c4f1f9;
-$greenColor: #46b464;
-$pinkColor: #ff94b9;
-$redColor: #d10c2c;
-$orangeColor: #ffae11;
-// цвета
-
 body {
 	font-family: "Inter", sans-serif;
 	font-size: 16px;
-	color: $mainColor;
 }
 
 [class*="__container"] {
@@ -24,12 +12,72 @@ body {
 	padding: 0 15px;
 }
 //========================================================================================================================================================
-.btn {
-	background: transparent;
-	padding: 0px 12px;
+.title {
+	text-align: center;
+	color: #000;
+	font-size: 18px;
+	line-height: (24/18 * 100%);
+	&:not(:last-child) {
+		margin-bottom: 12px;
+	}
 }
+.btn-add-task {
+	background: url("../img/add.svg") 0 0 no-repeat;
+	display: block;
+	width: 20px;
+	height: 20px;
+	margin-right: 12px;
+}
+
+.form {
+	display: flex;
+	align-items: center;
+	column-gap: 15px;
+	justify-content: space-between;
+	border-radius: 6px;
+	border: 1px solid #989898;
+	&:not(:last-child) {
+		margin-bottom: 12px;
+	}
+}
+.high-form {
+	// .high-form__input
+
+	&__input {
+		border-radius: 6px;
+		font-size: 16px;
+		padding: 12px;
+	}
+
+	// .high-form__btn-add-task
+
+	&__btn-add-task {
+	}
+}
+.low-form {
+	// .low-form__input
+
+	&__input {
+		border-radius: 6px;
+		font-size: 16px;
+		padding: 12px;
+	}
+
+	// .low-form__btn-add-task
+
+	&__btn-add-task {
+	}
+}
+.high-task-checkbox {
+}
+
+.low-task-checkbox {
+}
+
+//========================================================================================================================================================
+
 .to-do {
-	padding: 70px 0px;
+	padding-top: 50px;
 	// .to-do__container
 
 	&__container {
@@ -45,107 +93,91 @@ body {
 		width: 100%;
 	}
 
-	// .to-do__pripority
+	// .to-do__high-priority-title
 
-	&__pripority {
-		text-align: center;
-		color: $mainColor;
+	&__high-priority-title {
+	}
+
+	// .to-do__high-form
+
+	&__high-form {
+	}
+
+	// .to-do__high-tasks
+
+	&__high-tasks {
 		&:not(:last-child) {
 			margin-bottom: 12px;
 		}
 	}
 
-	// .to-do__row
+	// .to-do__task
 
-	&__row {
+	&__task {
 		display: flex;
-		gap: 10px;
 		justify-content: space-between;
+		column-gap: 15px;
 		border-radius: 6px;
 		border: 1px solid #989898;
-		&:not(:last-child) {
-			margin-bottom: 10px;
-		}
-		&_p {
-			padding: 12px;
-		}
-		&_checked {
-			background-color: #f4f4f4;
-		}
-	}
-
-	&__label {
-		width: 100%;
-	}
-
-	// .to-do__input
-
-	&__input {
-		width: 100%;
 		padding: 12px;
-		border-radius: 6px;
+		&:not(:last-child) {
+			margin-bottom: 12px;
+		}
+
+		&.checked {
+			background: rgb(44, 240, 139);
+		}
 	}
 
-	// .to-do__btn-add
+	// .to-do__checkbox
 
-	&__btn-add {
+	&__checkbox {
+		align-self: start;
 	}
 
-	// .to-do__checkbox-label
-	&__checkbox-label {
-		cursor: pointer;
-		display: flex;
+	// .to-do__task-name
+
+	&__task-name {
 		width: 100%;
+		align-self: flex-start;
 	}
 
-	// .to-do__checkbox-input
+	// .to-do__btn-delete-task
 
-	&__checkbox-input {
-		width: 0;
-		height: 0;
-		opacity: 0;
-		position: absolute;
-		z-index: -1;
-	}
-
-	&__checkbox-custom {
-		cursor: pointer;
-		position: relative;
-		display: inline-block;
+	&__btn-delete-task {
+		background: url("../img/delete.svg") 0 0 no-repeat;
+		flex: 0 0 20px;
 		width: 20px;
 		height: 20px;
-		background: transparent;
-		border: 1px solid #989;
-		border-radius: 50%;
-		margin-right: 12px;
-		&::before {
-			content: "";
-			position: absolute;
-			display: inline-block;
-			transform: scale(0);
-			width: 14px;
-			height: 14px;
-			top: 12%;
-			left: 12%;
-			background: #c4c4c4;
-			border-radius: 50%;
-			transition: transform 0.3s ease 0s;
-		}
+		display: block;
 	}
 
-	// .to-do__text
+	// .to-do__low-priority-title
 
-	&__text {
+	&__low-priority-title {
 	}
 
-	// .to-do__btn-delete
+	// .to-do__low-form
 
-	&__btn-delete {
-		align-self: start;
-		padding: 0;
+	&__low-form {
+	}
+
+	// .to-do__low-tasks
+
+	&__low-tasks {
 	}
 }
 
-.to-do__checkbox-input:checked + .to-do__checkbox-custom::before {
-	transform: scale(1);
+input[type="checkbox"] {
+	flex: 0 0 25px;
+	appearance: none;
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+	border: 1px solid #c4c4c4;
+	cursor: pointer;
+}
+input[type="checkbox"]:checked {
+	background-color: gray;
+	border: 3px solid #c4c4c4;
 }

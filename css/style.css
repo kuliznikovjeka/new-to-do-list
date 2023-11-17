@@ -98,7 +98,6 @@ table {
 body {
   font-family: "Inter", sans-serif;
   font-size: 16px;
-  color: #000;
 }
 
 [class*="__container"] {
@@ -107,13 +106,59 @@ body {
   padding: 0 15px;
 }
 
-.btn {
-  background: transparent;
-  padding: 0px 12px;
+.title {
+  text-align: center;
+  color: #000;
+  font-size: 18px;
+  line-height: 133.33333%;
+}
+
+.title:not(:last-child) {
+  margin-bottom: 12px;
+}
+
+.btn-add-task {
+  background: url("../img/add.svg") 0 0 no-repeat;
+  display: block;
+  width: 20px;
+  height: 20px;
+  margin-right: 12px;
+}
+
+.form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-column-gap: 15px;
+          column-gap: 15px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-radius: 6px;
+  border: 1px solid #989898;
+}
+
+.form:not(:last-child) {
+  margin-bottom: 12px;
+}
+
+.high-form__input {
+  border-radius: 6px;
+  font-size: 16px;
+  padding: 12px;
+}
+
+.low-form__input {
+  border-radius: 6px;
+  font-size: 16px;
+  padding: 12px;
 }
 
 .to-do {
-  padding: 70px 0px;
+  padding-top: 50px;
 }
 
 .to-do__container {
@@ -133,103 +178,69 @@ body {
   width: 100%;
 }
 
-.to-do__pripority {
-  text-align: center;
-  color: #000;
-}
-
-.to-do__pripority:not(:last-child) {
+.to-do__high-tasks:not(:last-child) {
   margin-bottom: 12px;
 }
 
-.to-do__row {
+.to-do__task {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  gap: 10px;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-column-gap: 15px;
+          column-gap: 15px;
   border-radius: 6px;
   border: 1px solid #989898;
-}
-
-.to-do__row:not(:last-child) {
-  margin-bottom: 10px;
-}
-
-.to-do__row_p {
   padding: 12px;
 }
 
-.to-do__row_checked {
-  background-color: #f4f4f4;
+.to-do__task:not(:last-child) {
+  margin-bottom: 12px;
 }
 
-.to-do__label {
-  width: 100%;
+.to-do__task.checked {
+  background: #2cf08b;
 }
 
-.to-do__input {
-  width: 100%;
-  padding: 12px;
-  border-radius: 6px;
-}
-
-.to-do__checkbox-label {
-  cursor: pointer;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-}
-
-.to-do__checkbox-input {
-  width: 0;
-  height: 0;
-  opacity: 0;
-  position: absolute;
-  z-index: -1;
-}
-
-.to-do__checkbox-custom {
-  cursor: pointer;
-  position: relative;
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  background: transparent;
-  border: 1px solid #989;
-  border-radius: 50%;
-  margin-right: 12px;
-}
-
-.to-do__checkbox-custom::before {
-  content: "";
-  position: absolute;
-  display: inline-block;
-  -webkit-transform: scale(0);
-          transform: scale(0);
-  width: 14px;
-  height: 14px;
-  top: 12%;
-  left: 12%;
-  background: #c4c4c4;
-  border-radius: 50%;
-  -webkit-transition: -webkit-transform 0.3s ease 0s;
-  transition: -webkit-transform 0.3s ease 0s;
-  transition: transform 0.3s ease 0s;
-  transition: transform 0.3s ease 0s, -webkit-transform 0.3s ease 0s;
-}
-
-.to-do__btn-delete {
+.to-do__checkbox {
   -ms-flex-item-align: start;
       -ms-grid-row-align: start;
       align-self: start;
-  padding: 0;
 }
 
-.to-do__checkbox-input:checked + .to-do__checkbox-custom::before {
-  -webkit-transform: scale(1);
-          transform: scale(1);
+.to-do__task-name {
+  width: 100%;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+}
+
+.to-do__btn-delete-task {
+  background: url("../img/delete.svg") 0 0 no-repeat;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 20px;
+          flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+input[type="checkbox"] {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 25px;
+          flex: 0 0 25px;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 1px solid #c4c4c4;
+  cursor: pointer;
+}
+
+input[type="checkbox"]:checked {
+  background-color: gray;
+  border: 3px solid #c4c4c4;
 }

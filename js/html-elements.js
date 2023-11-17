@@ -1,8 +1,8 @@
-export const HTML_ELEMENTS = {
-	FORM_HIGH_PRIORITY: document.querySelector('#form-high-priority'),
-	FORM_LOW_PRIORITY: document.querySelector('#form-low-priority'),
-	INPUT_HIGH_PRIORITY: document.querySelector('#high-task'),
-	INPUT_LOW_PRIORITY: document.querySelector('#low-task'),
+export const ELEMENTS = {
+	HIGH_FORM: document.querySelector('.high-form'),
+	LOW_FORM: document.querySelector('.low-form'),
+	HIGH_FORM_INPUT: document.querySelector('.high-form__input'),
+	LOW_FORM_INPUT: document.querySelector('.low-form__input'),
+	HIGH_TASK_WRAP: document.querySelector('.to-do__high-tasks'),
+	LOW_TASK_WRAP: document.querySelector('.to-do__low-tasks'),
 }
-
-

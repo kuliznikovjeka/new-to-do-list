@@ -1,57 +1,130 @@
-import { HTML_ELEMENTS } from './html-elements.js';
+import { ELEMENTS } from './html-elements.js'
+import { PRIORITY, STATUS, taskList } from './data.js'
 
-HTML_ELEMENTS.FORM_HIGH_PRIORITY.addEventListener('submit', createTask);
-HTML_ELEMENTS.FORM_LOW_PRIORITY.addEventListener('submit', createTask);
+ELEMENTS.HIGH_FORM.addEventListener("submit", createTask);
+ELEMENTS.LOW_FORM.addEventListener("submit", createTask);
+ELEMENTS.HIGH_TASK_WRAP.addEventListener('click', deleteTask);
+ELEMENTS.LOW_TASK_WRAP.addEventListener('click', deleteTask);
+ELEMENTS.HIGH_TASK_WRAP.addEventListener('click', changeStatus);
+ELEMENTS.LOW_TASK_WRAP.addEventListener('click', changeStatus);
+render(taskList);
 
-function createTask(event) {
-	event.preventDefault();
-	const target = event.target;
+function render(arr) {
+	removeChildren(ELEMENTS.HIGH_TASK_WRAP);
+	removeChildren(ELEMENTS.LOW_TASK_WRAP);
 
-	const highPriorityInputValue = HTML_ELEMENTS.INPUT_HIGH_PRIORITY.value;
-	const lowPriorityInputValue = HTML_ELEMENTS.INPUT_LOW_PRIORITY.value;
+	for (let i = 0; i < taskList.length; i++) {
 
-	const row = createElement('div', 'to-do__row');
-	row.classList.add('to-do__row_p');
-	const label = createElement('label', 'to-do__checkbox-label');
-	const body = createElement('div', 'to-do__body');
-	const checkbox = createElement('input', 'to-do__checkbox-input', '', 'checkbox');
-	const customCheckbox = createElement('span', 'to-do__checkbox-custom');
-	const text = createElement('p', 'to-do__text');
-	const btnDelete = createElement('button', 'to-do__btn-delete', '', 'button');
-	btnDelete.classList.add('to-do__btn-delete_high', 'btn');
-	const img = createElement('img', 'close');
-	img.src = './icons/delete.svg';
+		const task = buildElement('div', 'to-do__task');
+		const checkbox = buildElement('input', 'to-do__checkbox');
+		checkbox.type = 'checkbox';
+		const taskName = buildElement('p', 'to-do__task-name');
+		taskName.textContent = taskList[i].name;
+		const btnDeleteTask = buildElement('button', 'to-do__btn-delete-task');
+		task.append(checkbox, taskName, btnDeleteTask);
 
-	row.append(label, btnDelete);
-	label.append(body, text);
-	btnDelete.append(img);
-	body.append(checkbox, customCheckbox);
+		if (arr[i].priority === PRIORITY.HIGH) {
+			ELEMENTS.HIGH_TASK_WRAP.append(task);
+		} else {
+			ELEMENTS.LOW_TASK_WRAP.append(task);
+		}
+
+		if (arr[i].status === STATUS.DONE) {
+			checkbox.checked = true;
+			task.classList.add('checked')
+		}
+	}
+
+}
+
+function createTask(e) {
+	e.preventDefault();
+	const target = e.target;
+
+	const highInputValue = ELEMENTS.HIGH_FORM_INPUT.value;
+	const lowInputValue = ELEMENTS.LOW_FORM_INPUT.value;
 
 	switch (target) {
-		case HTML_ELEMENTS.FORM_HIGH_PRIORITY:
-			text.textContent = highPriorityInputValue;
-			HTML_ELEMENTS.FORM_HIGH_PRIORITY.after(row);
-			render(HTML_ELEMENTS.INPUT_HIGH_PRIORITY)
+		case ELEMENTS.HIGH_FORM:
+			addTask(taskList, highInputValue, PRIORITY.HIGH);
+			resetInput(ELEMENTS.HIGH_FORM_INPUT)
 			break;
-		case HTML_ELEMENTS.FORM_LOW_PRIORITY:
-			text.textContent = lowPriorityInputValue;
-			HTML_ELEMENTS.FORM_LOW_PRIORITY.after(row);
-			render(HTML_ELEMENTS.INPUT_LOW_PRIORITY)
+		case ELEMENTS.LOW_FORM:
+			addTask(taskList, lowInputValue, PRIORITY.LOW);
+			resetInput(ELEMENTS.LOW_FORM_INPUT)
 			break;
+	}
+
+	render(taskList);
+}
+
+function addTask(arr, taskName, priority) {
+
+	const newTask = {};
+	newTask.name = taskName;
+	newTask.status = STATUS.TODO;
+	newTask.priority = priority;
+
+	arr.push(newTask);
+}
+
+function removeChildren(wrapper) {
+	while (wrapper.hasChildNodes()) {
+		wrapper.replaceChildren();
 	}
 }
 
-function createElement(tagName, className, text, typeName) {
+function resetInput(input) {
+	const epmtyStr = '';
+	input.value = epmtyStr;
+}
+
+function buildElement(tagName, className, text) {
 	const tag = document.createElement(tagName);
 	tag.classList.add(className);
 	tag.textContent = text;
-	tag.type = typeName;
 	return tag
 }
 
-function render(inputValue) {
-	inputValue.value = '';
+function deleteTask(event) {
+	if (!event.target.classList.contains('to-do__btn-delete-task')) return;
+
+	const oneElement = 1;
+	const taskName = event.target.previousSibling.textContent;
+	console.log(taskName);
+
+	const position = taskList.findIndex(task => {
+		return task.name === taskName;
+	})
+
+	taskList.splice(position, oneElement)
+
+	render(taskList)
 }
 
+function changeStatus(e) {
 
+	if (!(e.target.classList.contains('to-do__checkbox'))) return;
 
+	const checkbox = e.target;
+	// console.log(checkbox);
+	const checkedElement = e.target.checked;
+	// console.log(checkedElement);
+	const wrapper = e.target.parentNode;
+	console.log(wrapper);
+
+	const taskName = checkbox.nextSibling.textContent;
+	// console.log(taskName);
+
+	const position = taskList.findIndex(task => task.name === taskName);
+	// console.log(position);
+
+	if (checkedElement === true && !wrapper.classList.contains('checked')) {
+		taskList[position].status = STATUS.DONE;
+	} else {
+		taskList[position].status = STATUS.TODO;
+	}
+
+	render(taskList)
+
+}
