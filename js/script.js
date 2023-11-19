@@ -1,6 +1,7 @@
 import { ELEMENTS } from './html-elements.js'
 import { PRIORITY, STATUS, taskList } from './data.js'
 import { ERRORS } from './errors.js';
+import data from './tasks.json' assert {type: "json"};
 
 ELEMENTS.HIGH_FORM.addEventListener("submit", createTask);
 ELEMENTS.LOW_FORM.addEventListener("submit", createTask);
@@ -8,6 +9,10 @@ ELEMENTS.HIGH_TASK_WRAP.addEventListener('click', deleteTask);
 ELEMENTS.LOW_TASK_WRAP.addEventListener('click', deleteTask);
 ELEMENTS.HIGH_TASK_WRAP.addEventListener('click', changeStatus);
 ELEMENTS.LOW_TASK_WRAP.addEventListener('click', changeStatus);
+
+data.tasks.forEach(task => {
+	taskList.push(task);
+})
 
 render(taskList);
 

@@ -9,6 +9,6 @@ export const STATUS = {
 }
 
 export const taskList = [
-	{ name: 'Phone to mother', status: STATUS.TODO, priority: PRIORITY.HIGH },
-	{ name: 'Buy socks', status: STATUS.DONE, priority: PRIORITY.LOW },
+	{ name: 'Купить носки', status: STATUS.DONE, priority: PRIORITY.LOW },
 ];
+

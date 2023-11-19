@@ -1,0 +1,39 @@
+{
+	"tasks": [
+		{
+			"name": "Позвонить маме",
+			"status": "Done",
+			"priority": "High"
+		},
+		{
+			"name": "Дойти Strada до конца",
+			"status": "To do",
+			"priority": "High"
+		},
+		{
+			"name": "Умыться",
+			"status": "Done",
+			"priority": "High"
+		},
+		{
+			"name": "Сходить в магазин",
+			"status": "To do",
+			"priority": "Low"
+		},
+		{
+			"name": "Приготовить завтрак",
+			"status": "To do",
+			"priority": "High"
+		},
+		{
+			"name": "Поехать на учебу",
+			"status": "To do",
+			"priority": "High"
+		},
+		{
+			"name": "Сходить в зал",
+			"status": "To do",
+			"priority": "Low"
+		}
+	]
+}
