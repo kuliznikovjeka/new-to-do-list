@@ -1,5 +1,6 @@
 import { ELEMENTS } from './html-elements.js'
 import { PRIORITY, STATUS, taskList } from './data.js'
+import { ERRORS } from './errors.js';
 
 ELEMENTS.HIGH_FORM.addEventListener("submit", createTask);
 ELEMENTS.LOW_FORM.addEventListener("submit", createTask);
@@ -7,6 +8,7 @@ ELEMENTS.HIGH_TASK_WRAP.addEventListener('click', deleteTask);
 ELEMENTS.LOW_TASK_WRAP.addEventListener('click', deleteTask);
 ELEMENTS.HIGH_TASK_WRAP.addEventListener('click', changeStatus);
 ELEMENTS.LOW_TASK_WRAP.addEventListener('click', changeStatus);
+
 render(taskList);
 
 function render(arr) {
@@ -33,8 +35,18 @@ function render(arr) {
 			checkbox.checked = true;
 			task.classList.add('checked')
 		}
+
 	}
 
+}
+
+function getInputError(inputValue) {
+	const errorHighInput = inputValue.length < 3 || inputValue.length > 35;
+	const errorLowInput = inputValue.length < 3 || inputValue.length > 35;
+
+	if (errorHighInput || errorLowInput) {
+		throw new Error(ERRORS.LENGTH_ERROR);
+	}
 }
 
 function createTask(e) {
@@ -46,12 +58,29 @@ function createTask(e) {
 
 	switch (target) {
 		case ELEMENTS.HIGH_FORM:
+
+			try {
+				getInputError(highInputValue);
+			} catch {
+				alert(ERRORS.LENGTH_ERROR + ` Вы ввели ${highInputValue.length}`);
+				return;
+			}
+
 			addTask(taskList, highInputValue, PRIORITY.HIGH);
-			resetInput(ELEMENTS.HIGH_FORM_INPUT)
+			resetInput(ELEMENTS.HIGH_FORM_INPUT);
 			break;
+
 		case ELEMENTS.LOW_FORM:
+
+			try {
+				getInputError(lowInputValue);
+			} catch {
+				alert(ERRORS.LENGTH_ERROR + ` Вы ввели ${lowInputValue.length}`);
+				return
+			}
+
 			addTask(taskList, lowInputValue, PRIORITY.LOW);
-			resetInput(ELEMENTS.LOW_FORM_INPUT)
+			resetInput(ELEMENTS.LOW_FORM_INPUT);
 			break;
 	}
 
@@ -107,7 +136,7 @@ function changeStatus(e) {
 	if (!(e.target.classList.contains('to-do__checkbox'))) return;
 
 	const checkbox = e.target;
-	// console.log(checkbox);
+	console.log(checkbox);
 	const checkedElement = e.target.checked;
 	// console.log(checkedElement);
 	const wrapper = e.target.parentNode;
